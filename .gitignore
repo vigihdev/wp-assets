@@ -1,0 +1,27 @@
+# Dependency directories dot
+.amazonq
+.github
+/.vscode
+
+# Dependency directories
+/vendor/
+
+# Composer
+composer.lock
+
+# Build outputs
+/build/
+/dist/
+
+# Environment files dot
+.DS_Store
+.env
+.env.local
+
+# Environment files
+/server.php
+/wp-bootstrap.php
+
+# IDE
+.idea/
+.phpstorm.meta.php
