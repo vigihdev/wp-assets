@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace WpAssets\Contracts;
+namespace Vigihdev\WpAssets\Contracts;
 
-interface RegisterContract
+interface RegisterInterface
 {
     public function register(): void;
 }

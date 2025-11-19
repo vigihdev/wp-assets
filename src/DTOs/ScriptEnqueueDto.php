@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace WpAssets;
+namespace Vigihdev\WpAssets\DTOs;
 
-use WpAssets\Contracts\EnqueueScriptContract;
+use Vigihdev\WpAssets\Contracts\ScriptEnqueueInterface;
 
-final class PublishScriptAsset implements EnqueueScriptContract
+final class ScriptEnqueueDto implements ScriptEnqueueInterface
 {
+
     public function __construct(
         private readonly string $handle,
         private readonly string $srcUri,
         private readonly array $depends,
-        private readonly string|bool $version = false,
+        private readonly string|bool|int $version = false,
         private readonly array $options = []
     ) {}
 
@@ -39,18 +40,5 @@ final class PublishScriptAsset implements EnqueueScriptContract
     public function getOptions(): array
     {
         return $this->options;
-    }
-
-    public function register(): void
-    {
-        add_action('wp_enqueue_scripts', function () {
-            wp_enqueue_script(
-                $this->getHandle(),
-                $this->getSrcUri(),
-                $this->getDepends(),
-                $this->getVersion(),
-                $this->getOptions()
-            );
-        });
     }
 }

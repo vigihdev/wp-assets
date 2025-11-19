@@ -1,0 +1,56 @@
+# packages/asset.yaml
+
+parameters:
+  dist.basePath: "%env(STYLESHEETPATH)%/dist"
+  dist.uri: "%env(STYLESHEET_PATH_URI)%/dist"
+
+services:
+  nonce.asset:
+    class: 'Vigihdev\WpAssets\NonceScriptAsset'
+    arguments:
+      $actions:
+        - "order"
+        - "btn_harga"
+
+  module.js.asset:
+    class: 'Vigihdev\WpAssets\ModuleJsAsset'
+    arguments:
+      $basePath: "%dist.basePath%/module-js"
+      $baseUrl: "%dist.uri%/module-js"
+      $version: "1010"
+      $js:
+        - "js/main.js"
+
+  app.asset:
+    class: 'Vigihdev\WpAssets\AppAsset'
+    arguments:
+      $basePath: "%dist.basePath%"
+      $baseUrl: "%dist.uri%"
+      $version: "1010"
+      $js:
+        - "js/bootstrap-bundle.js"
+        - "js/service-worker.js"
+        - "js/owl-carousel.js"
+        - "js/test.js"
+      $css:
+        - "css/bootstrap.bundle.css"
+
+  jquery.asset:
+    class: 'Vigihdev\WpAssets\JqueryAsset'
+    arguments:
+      $basePath: "%dist.basePath%"
+      $baseUrl: "%dist.uri%"
+      $version: "1010"
+      $js:
+        - "js/jquery.min.js"
+
+  # Asset Manager Service
+  Vigihdev\WpAssets\Contracts\WpAssetManagerInterface:
+    class: 'Vigihdev\WpAssets\Service\WpAssetManagerService'
+    public: true
+    arguments:
+      $assets:
+        jquery: "@jquery.asset"
+        appAsset: "@app.asset"
+        nonceAsset: "@nonce.asset"
+        moduleJsAsset: "@module.js.asset"
