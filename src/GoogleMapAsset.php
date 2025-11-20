@@ -14,7 +14,6 @@ final class GoogleMapAsset
         private readonly string $baseUrl,
         private readonly string $version,
         private readonly array $js = [],
-        private readonly array $css = []
     ) {
         if (!is_dir($basePath)) {
             throw new InvalidArgumentException("Error Directory {$basePath} tidak di temukan");

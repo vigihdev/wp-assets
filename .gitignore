@@ -10,3 +10,4 @@ composer.lock
 .phpstorm.meta.php
 dev.php
 docs
+/.phpunit.cache

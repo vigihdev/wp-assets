@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Vigihdev\WpAssets;
+namespace Vigihdev\WpAssets\DTOs;
 
 use Vigihdev\WpAssets\Contracts\ScriptLocalizeInterface;
 
-final class NonceScriptAsset implements ScriptLocalizeInterface
+final class ScriptLocalizeDto implements ScriptLocalizeInterface
 {
 
     public function __construct(

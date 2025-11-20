@@ -12,7 +12,7 @@ interface ScriptEnqueueInterface
 
     public function getDepends(): array;
 
-    public function getVersion(): string|bool;
+    public function getVersion(): string|bool|null;
 
     public function getOptions(): array;
 }

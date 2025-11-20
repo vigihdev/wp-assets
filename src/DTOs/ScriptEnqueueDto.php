@@ -13,7 +13,7 @@ final class ScriptEnqueueDto implements ScriptEnqueueInterface
         private readonly string $handle,
         private readonly string $srcUri,
         private readonly array $depends,
-        private readonly string|bool|int $version = false,
+        private readonly string|bool|null $version = false,
         private readonly array $options = []
     ) {}
 
@@ -32,7 +32,7 @@ final class ScriptEnqueueDto implements ScriptEnqueueInterface
         return $this->depends;
     }
 
-    public function getVersion(): string|bool
+    public function getVersion(): string|bool|null
     {
         return $this->version;
     }

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Vigihdev\WpAssets\Service;
 
+use ArrayIterator;
 use InvalidArgumentException;
-use Vigihdev\WpAssets\Contracts\WpAssetManagerInterface;
+use Vigihdev\WpAssets\Contracts\{PublishStyleInterface, PublishScriptInterface, ScriptLocalizeInterface, WpAssetManagerInterface};
 
 final class WpAssetManagerService implements WpAssetManagerInterface
 {
 
     /**
-     * @param array<string,object> $assets
+     * @param array<string,PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface> $assets
      * @return void
      */
     public function __construct(
@@ -20,12 +21,23 @@ final class WpAssetManagerService implements WpAssetManagerInterface
 
 
     /**
+     * Mendapatkan iterator untuk koleksi.
+     *
+     * @return \ArrayIterator Iterator untuk data koleksi.
+     */
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->assets);
+    }
+
+
+    /**
      *
      * @param string $name
-     * @return object|null
+     * @return PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface
      * @throws InvalidArgumentException
      */
-    public function getService(string $name): ?object
+    public function getService(string $name): PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface
     {
         if (! $this->hasService($name)) {
             throw new InvalidArgumentException("Service {$name} tidak tersedia");
