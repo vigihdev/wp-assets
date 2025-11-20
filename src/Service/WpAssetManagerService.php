@@ -21,23 +21,12 @@ final class WpAssetManagerService implements WpAssetManagerInterface
 
 
     /**
-     * Mendapatkan iterator untuk koleksi.
-     *
-     * @return \ArrayIterator Iterator untuk data koleksi.
-     */
-    public function getIterator(): ArrayIterator
-    {
-        return new ArrayIterator($this->assets);
-    }
-
-
-    /**
      *
      * @param string $name
      * @return PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface
      * @throws InvalidArgumentException
      */
-    public function getService(string $name): PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface
+    public function getService(string $name): object
     {
         if (! $this->hasService($name)) {
             throw new InvalidArgumentException("Service {$name} tidak tersedia");

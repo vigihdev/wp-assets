@@ -14,7 +14,7 @@ interface WpAssetManagerInterface
      * @return PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface
      * @throws InvalidArgumentException
      */
-    public function getService(string $name): PublishStyleInterface|PublishScriptInterface|ScriptLocalizeInterface;
+    public function getService(string $name): object;
 
     /**
      *
