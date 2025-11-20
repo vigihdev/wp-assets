@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Vigihdev\WpAssets\Service;
 
-use ArrayIterator;
 use InvalidArgumentException;
 use Vigihdev\WpAssets\Contracts\{PublishStyleInterface, PublishScriptInterface, ScriptLocalizeInterface, WpAssetManagerInterface};
 
