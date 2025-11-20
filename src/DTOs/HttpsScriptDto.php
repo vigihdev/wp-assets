@@ -4,28 +4,21 @@ declare(strict_types=1);
 
 namespace Vigihdev\WpAssets\DTOs;
 
-use Vigihdev\WpAssets\Contracts\{JsOptionsInterface, ScriptEnqueueInterface};
-use vigihdev\WpAssets\DTOs\JsOptionsDto;
+use Vigihdev\WpAssets\Contracts\HttpsScriptInterface;
 
-final class ScriptEnqueueDto implements ScriptEnqueueInterface
+final class HttpsScriptDto implements HttpsScriptInterface
 {
 
-
-    /** 
-     * @param JsOptionsDto $jsOption 
-     */
     public function __construct(
         private readonly string $handle,
         private readonly string $srcUri,
         private readonly array $depends,
-        private readonly JsOptionsInterface $jsOption,
         private readonly string|bool|null $version = false,
         private readonly array $options = []
-    ) {}
-
-    public function getJsOption(): JsOptionsInterface
-    {
-        return $this->jsOption;
+    ) {
+        if (substr($srcUri, 0, 4) !== 'http') {
+            throw new \InvalidArgumentException("The {$srcUri} must be an HTTPS URL.");
+        }
     }
 
     public function getHandle(): string

@@ -5,6 +5,12 @@ parameters:
   dist.uri: "%env(STYLESHEET_PATH_URI)%/dist"
 
 services:
+  option.js:
+    class: 'Vigihdev\WpAssets\DTOs\JsOptionsDto'
+    arguments:
+      $strategy: "defer"
+      $inFooter: true
+
   nonce.asset:
     class: 'Vigihdev\WpAssets\NonceScriptAsset'
     arguments:
@@ -27,6 +33,7 @@ services:
       $basePath: "%dist.basePath%"
       $baseUrl: "%dist.uri%"
       $version: "%env(ASSETS_VERSION)%"
+      $jsOption: "@option.js"
       $js:
         - "js/bootstrap-bundle.js"
         - "js/service-worker.js"
@@ -41,8 +48,15 @@ services:
       $basePath: "%dist.basePath%"
       $baseUrl: "%dist.uri%"
       $version: "%env(ASSETS_VERSION)%"
+      $jsOption: "@option.js"
       $js:
         - "js/jquery.min.js"
+
+  js.option:
+    class: 'Vigihdev\WpAssets\DTOs\JsOptionsDto'
+    arguments:
+      $strategy: "defer"
+      $inFooter: true
 
   # Asset Manager Service
   Vigihdev\WpAssets\Contracts\WpAssetManagerInterface:
@@ -54,3 +68,4 @@ services:
         appAsset: "@app.asset"
         nonceAsset: "@nonce.asset"
         moduleJsAsset: "@module.js.asset"
+        jsOptions: "@js.option"

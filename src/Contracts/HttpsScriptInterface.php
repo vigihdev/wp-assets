@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Vigihdev\WpAssets\Contracts;
 
-interface ScriptEnqueueInterface
+interface HttpsScriptInterface
 {
+
     public function getHandle(): string;
 
     public function getSrcUri(): string;
@@ -15,6 +16,4 @@ interface ScriptEnqueueInterface
     public function getVersion(): string|bool|null;
 
     public function getOptions(): array;
-
-    public function getJsOption(): JsOptionsInterface;
 }

@@ -6,6 +6,7 @@ namespace Vigihdev\WpAssets;
 
 use InvalidArgumentException;
 use Symfony\Component\Filesystem\Path;
+use Vigihdev\WpAssets\Contracts\JsOptionsInterface;
 use Vigihdev\WpAssets\Contracts\PublishScriptInterface;
 use Vigihdev\WpAssets\Contracts\PublishStyleInterface;
 use Vigihdev\WpAssets\DTOs\ScriptEnqueueDto;
@@ -18,6 +19,7 @@ final class AppAsset extends BaseAsset implements PublishScriptInterface, Publis
         private readonly string $basePath,
         private readonly string $baseUrl,
         private readonly string $version,
+        private readonly JsOptionsInterface $jsOption,
         private readonly array $js = [],
         private readonly array $css = []
     ) {
@@ -41,6 +43,7 @@ final class AppAsset extends BaseAsset implements PublishScriptInterface, Publis
                     handle: $this->withHandleFilename($file, 'js'),
                     srcUri: "{$this->baseUrl}/{$js}",
                     version: $this->version,
+                    jsOption: $this->jsOption,
                     depends: [],
                     options: []
                 );

@@ -6,6 +6,7 @@ namespace Vigihdev\WpAssets;
 
 use InvalidArgumentException;
 use Symfony\Component\Filesystem\Path;
+use Vigihdev\WpAssets\Contracts\JsOptionsInterface;
 use Vigihdev\WpAssets\Contracts\PublishScriptInterface;
 use Vigihdev\WpAssets\DTOs\ScriptEnqueueDto;
 
@@ -15,6 +16,7 @@ final class JqueryAsset extends BaseAsset implements PublishScriptInterface
     public function __construct(
         private readonly string $basePath,
         private readonly string $baseUrl,
+        private readonly JsOptionsInterface $jsOption,
         private readonly string|bool|null $version,
         private readonly array $js = [],
     ) {
@@ -38,6 +40,7 @@ final class JqueryAsset extends BaseAsset implements PublishScriptInterface
                     handle: $this->withHandleFilename($file, 'js'),
                     srcUri: "{$this->baseUrl}/{$js}",
                     version: $this->version,
+                    jsOption: $this->jsOption,
                     depends: [],
                     options: []
                 );
