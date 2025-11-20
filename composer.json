@@ -57,10 +57,6 @@
     "scripts": {
         "test": "phpunit",
         "push-all": "sh ./scripts/push-all.sh",
-        "satis-build": "sh ~/.scripts/build-satis.sh https://github.com/vigihdev/wp-assets.git",
-        "build": "ssh -t okkarent.co.id \"cd public_html/repo.thrubus.id && /opt/alt/php81/usr/bin/php ./bin/satis build --repository-url=https://github.com/thrubus/wp-thrubus-bundle.git && exit;bash --login\"",
-        "cs-check": "phpcs --standard=PSR12 src/",
-        "cs-fix": "phpcbf --standard=PSR12 src/",
         "dev": "php -S localhost:5377 dev.php"
     }
 }
