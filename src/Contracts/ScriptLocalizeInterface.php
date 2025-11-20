@@ -10,4 +10,5 @@ interface ScriptLocalizeInterface
     public function getActionPrefix(): string;
     public function getVariableName(): string;
     public function getActions(): array;
+    public function getDepends(): array;
 }

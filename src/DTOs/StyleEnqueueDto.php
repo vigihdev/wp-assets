@@ -12,7 +12,7 @@ final class StyleEnqueueDto implements StyleEnqueueInterface
     public function __construct(
         private readonly string $handle,
         private readonly string $srcUri,
-        private readonly array $depends,
+        private readonly array $depends = [],
         private readonly string|bool|null $version = '1.0',
         private readonly string $media = 'all'
     ) {}

@@ -17,7 +17,7 @@ final class ScriptEnqueueDto implements ScriptEnqueueInterface
     public function __construct(
         private readonly string $handle,
         private readonly string $srcUri,
-        private readonly array $depends,
+        private readonly array $depends = [],
         private readonly JsOptionsInterface $jsOption,
         private readonly string|bool|null $version = false,
         private readonly array $options = []

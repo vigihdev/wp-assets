@@ -13,8 +13,14 @@ final class NonceScriptAsset implements ScriptLocalizeInterface
         private readonly string $handle = 'nonce-js',
         private readonly string $variableName = 'WP_API',
         private readonly string $actionPrefix = 'wp_ajax_',
+        private readonly array $depends = [],
         private readonly array $actions = []
     ) {}
+
+    public function getDepends(): array
+    {
+        return $this->depends;
+    }
 
     public function getHandle(): string
     {

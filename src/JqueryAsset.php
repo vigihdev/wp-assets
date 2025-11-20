@@ -18,6 +18,7 @@ final class JqueryAsset extends BaseAsset implements PublishScriptInterface
         private readonly string $baseUrl,
         private readonly JsOptionsInterface $jsOption,
         private readonly string|bool|null $version,
+        private readonly array $depends = [],
         private readonly array $js = [],
     ) {
         if (!is_dir($basePath)) {
@@ -41,7 +42,7 @@ final class JqueryAsset extends BaseAsset implements PublishScriptInterface
                     srcUri: "{$this->baseUrl}/{$js}",
                     version: $this->version,
                     jsOption: $this->jsOption,
-                    depends: [],
+                    depends: $this->depends,
                     options: []
                 );
             }

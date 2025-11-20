@@ -20,6 +20,7 @@ final class AppAsset extends BaseAsset implements PublishScriptInterface, Publis
         private readonly string $baseUrl,
         private readonly string $version,
         private readonly JsOptionsInterface $jsOption,
+        private readonly array $depends = [],
         private readonly array $js = [],
         private readonly array $css = []
     ) {
@@ -44,7 +45,7 @@ final class AppAsset extends BaseAsset implements PublishScriptInterface, Publis
                     srcUri: "{$this->baseUrl}/{$js}",
                     version: $this->version,
                     jsOption: $this->jsOption,
-                    depends: [],
+                    depends: $this->depends,
                     options: []
                 );
             }

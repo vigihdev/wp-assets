@@ -13,6 +13,7 @@ final class ModuleJsAsset
         private readonly string $basePath,
         private readonly string $baseUrl,
         private readonly string $version,
+        private readonly array $depends = [],
         private readonly array $js = [],
     ) {
         if (!is_dir($basePath)) {
