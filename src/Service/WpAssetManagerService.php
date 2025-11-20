@@ -28,6 +28,7 @@ final class WpAssetManagerService implements WpAssetManagerInterface
      */
     public function getService(string $name): object
     {
+
         if (! $this->hasService($name)) {
             throw new InvalidArgumentException("Service {$name} tidak tersedia");
         }
