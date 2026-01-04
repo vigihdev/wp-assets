@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Vigihdev\WpAssets\Service;
 
-use Vigihdev\WpAssets\Contracts\AppAssetInterface;
+use Vigihdev\Support\Text;
 use Vigihdev\WpAssets\Contracts\Manager\AppAssetManagerInterface;
 use Vigihdev\WpAssets\DTOs\AppAssetDto;
 use Vigihdev\WpAssets\Exceptions\WpAssetsException;
@@ -38,12 +38,33 @@ final class AppAssetManager implements AppAssetManagerInterface
      */
     public function publish(): void
     {
-        foreach ($this->asset->getCss() as $css) {
-            // TODO: Add css enqueue
-        }
 
-        foreach ($this->asset->getJs() as $js) {
-            // TODO: Add js enqueue
+        if (!empty($this->asset->getCss())) {
+            add_action('wp_enqueue_scripts', function () {
+                foreach ($this->asset->getCss() as $css) {
+                    // TODO: Add css enqueue
+                    wp_enqueue_style(
+                        handle: Text::toKebabCase($css),
+                        src: "{$this->asset->getBaseUrl()}/{$css}",
+                        deps: [],
+                        ver: $this->asset->getVersion(),
+                        media: 'all',
+                    );
+                }
+            });
+        }
+        if (!empty($this->asset->getJs())) {
+            add_action('wp_enqueue_scripts', function () {
+                foreach ($this->asset->getJs() as $js) {
+                    // TODO: Add js enqueue
+                    wp_enqueue_script(
+                        handle: Text::toKebabCase($js),
+                        src: "{$this->asset->getBaseUrl()}/{$js}",
+                        deps: $this->asset->getJsOptions()->toArray(),
+                        ver: $this->asset->getVersion(),
+                    );
+                }
+            });
         }
     }
 }
