@@ -1,0 +1,32 @@
+# js.yaml
+services:
+  js.prototype:
+    parent: "jsOptions.prototype"
+
+  defer.js.prototype:
+    parent: "jsOptions.prototype"
+    arguments:
+      $strategy: "defer"
+
+  # js
+  jquery_min.js:
+    parent: "scriptEnqueue.prototype"
+    tags: ["js"]
+    arguments:
+      $srcUri: "%dist.uri%/js/jquery.min.js"
+      $handle: "jquery-min"
+      $jsOption: "@js.prototype"
+
+  script.js:
+    parent: "depends_jquery.prototype"
+    tags: ["js"]
+    arguments:
+      $srcUri: "%dist.uri%/js/script.js"
+      $handle: "bs-script"
+      $jsOption: "@defer.js.prototype"
+
+  Vigihdev\WpAssets\Contracts\Manager\JsManagerInterface:
+    class: 'Vigihdev\WpAssets\Service\JsManager'
+    public: true
+    arguments:
+      $assets: !tagged_iterator js

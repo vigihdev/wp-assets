@@ -1,0 +1,15 @@
+services:
+  style.css:
+    public: true
+    parent: "styleEnqueue.prototype"
+    tags: ["css"]
+    arguments:
+      $srcUri: "%dist.uri%/css/style.css"
+      $handle: "style"
+
+  # Service
+  Vigihdev\WpAssets\Contracts\Manager\CssManagerInterface:
+    class: 'Vigihdev\WpAssets\Service\CssManager'
+    public: true
+    arguments:
+      $assets: !tagged_iterator css

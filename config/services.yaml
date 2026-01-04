@@ -1,3 +1,5 @@
 # services.yaml
 imports:
   - { resource: "packages/asset.yaml" }
+  # - { resource: "packages/asset-2.yaml" }
+  - { resource: "packages/assets.yaml" }

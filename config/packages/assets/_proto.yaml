@@ -1,0 +1,27 @@
+# js.yaml
+services:
+  scriptEnqueue.prototype:
+    abstract: true
+    class: 'Vigihdev\WpAssets\DTOs\ScriptEnqueueDto'
+    arguments:
+      $version: "%env(ASSETS_VERSION)%"
+
+  depends_jquery.prototype:
+    parent: "scriptEnqueue.prototype"
+    arguments:
+      $depends: ["jquery-min"]
+
+  jsOptions.prototype:
+    abstract: true
+    class: 'Vigihdev\WpAssets\DTOs\JsOptionsDto'
+    arguments:
+      $inFooter: true
+
+  # css prototype
+  styleEnqueue.prototype:
+    abstract: true
+    class: 'Vigihdev\WpAssets\DTOs\StyleEnqueueDto'
+    arguments:
+      $media: "all"
+      $version: "%env(ASSETS_VERSION)%"
+      $depends: []

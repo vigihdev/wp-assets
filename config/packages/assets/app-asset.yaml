@@ -1,0 +1,28 @@
+# app-asset.yaml
+services:
+  option.js:
+    class: 'Vigihdev\WpAssets\DTOs\JsOptionsDto'
+    arguments:
+      $strategy: "defer"
+      $inFooter: true
+
+  app.asset:
+    class: 'Vigihdev\WpAssets\DTOs\AppAssetDto'
+    arguments:
+      $basepath: "%dist.basePath%"
+      $baseUrl: "%dist.uri%"
+      $version: "%env(ASSETS_VERSION)%"
+      $jsOption: "@option.js"
+      $js:
+        - "js/bootstrap-bundle.js"
+        - "js/service-worker.js"
+        - "js/owl-carousel.js"
+        - "js/test.js"
+      $css:
+        - "css/bootstrap.bundle.css"
+
+  Vigihdev\WpAssets\Contracts\Manager\AppAssetManagerInterface:
+    public: true
+    class: 'Vigihdev\WpAssets\Service\AppAssetManager'
+    arguments:
+      $asset: "@app.asset"

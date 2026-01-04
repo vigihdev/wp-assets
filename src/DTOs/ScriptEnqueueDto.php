@@ -10,7 +10,6 @@ use vigihdev\WpAssets\DTOs\JsOptionsDto;
 final class ScriptEnqueueDto implements ScriptEnqueueInterface
 {
 
-
     /** 
      * @param JsOptionsDto $jsOption 
      */
