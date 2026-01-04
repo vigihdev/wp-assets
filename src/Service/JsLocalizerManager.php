@@ -24,7 +24,7 @@ final class JsLocalizerManager implements JsLocalizerManagerInterface
     {
         $localize = $this->localize;
         add_action('wp_enqueue_scripts', function () use ($localize) {
-            wp_register_script($localize->getHandle(), '', [], false, true);
+            wp_register_script($localize->getHandle(), '', $localize->getDepends(), false, true);
 
             wp_localize_script($localize->getHandle(), $localize->getVariableName(), [
                 'ajaxurl' => admin_url('admin-ajax.php'),

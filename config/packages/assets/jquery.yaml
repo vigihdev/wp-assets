@@ -1,7 +1,14 @@
 # jquery-js.yaml
 services:
-  scriptEnqueue.prototype:
-    abstract: true
-    class: 'Vigihdev\WpAssets\DTOs\ScriptEnqueueDto'
+  jquery.js:
+    parent: "scriptEnqueue.prototype"
     arguments:
-      $version: "%env(ASSETS_VERSION)%"
+      $srcUri: "%dist.uri%/js/jquery.min.js"
+      $handle: "jquery-min"
+      $jsOption: "@js.prototype"
+
+  Vigihdev\WpAssets\Contracts\Manager\JqueryManagerInterface:
+    public: true
+    class: 'Vigihdev\WpAssets\Service\JqueryManager'
+    arguments:
+      $jquery: "@jquery.js"
