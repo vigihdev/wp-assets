@@ -22,8 +22,17 @@ final class JsLocalizerManager implements JsLocalizerManagerInterface
 
     public function publish(): void
     {
-        add_action('wp_enqueue_scripts', function () {
-            // TODO: Add js enqueue
+        $localize = $this->localize;
+        add_action('wp_enqueue_scripts', function () use ($localize) {
+            wp_register_script($localize->getHandle(), '', [], false, true);
+
+            wp_localize_script($localize->getHandle(), $localize->getVariableName(), [
+                'ajaxurl' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce($localize->getNonce()),
+                'actions' => $localize->getActions(),
+            ]);
+
+            wp_enqueue_script($localize->getHandle());
         });
     }
 }
