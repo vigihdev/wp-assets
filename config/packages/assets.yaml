@@ -2,9 +2,11 @@
 parameters:
   dist.basePath: "%env(STYLESHEETPATH)%/dist"
   dist.uri: "%env(STYLESHEET_PATH_URI)%/dist"
+  jquery.handle: "jquery-min-js"
 
 imports:
   - { resource: "assets/_proto.yaml" }
+  - { resource: "assets/jquery.yaml" }
   - { resource: "assets/css.yaml" }
   - { resource: "assets/js.yaml" }
   - { resource: "assets/app-asset.yaml" }

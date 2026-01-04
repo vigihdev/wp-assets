@@ -7,10 +7,15 @@ services:
       $variableName: "WP_API"
       $actionPrefix: "wp_ajax_"
       $nonce: "wp_ajax_nonce"
-      $depends: ["jquery-min"]
+      $depends: ["%jquery.handle%"]
       $actions:
-        - "order"
-        - "btn_harga"
+        {
+          "search_post": "search_post",
+          "harga_sewa_bus": "harga_sewa_bus",
+          "harga_sewa_mobil": "harga_sewa_mobil",
+          "wa_call_api": "wa_call_api",
+          "wa_booking_api": "wa_booking_api",
+        }
 
   Vigihdev\WpAssets\Contracts\Manager\JsLocalizerManagerInterface:
     public: true

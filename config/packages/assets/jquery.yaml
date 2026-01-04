@@ -4,8 +4,8 @@ services:
     parent: "scriptEnqueue.prototype"
     arguments:
       $srcUri: "%dist.uri%/js/jquery.min.js"
-      $handle: "jquery-min"
-      $jsOption: "@js.prototype"
+      $handle: "%jquery.handle%"
+      $jsOption: "@js.footer.prototype"
 
   Vigihdev\WpAssets\Contracts\Manager\JqueryManagerInterface:
     public: true

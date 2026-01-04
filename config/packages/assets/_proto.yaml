@@ -6,16 +6,24 @@ services:
     arguments:
       $version: "%env(ASSETS_VERSION)%"
 
+  jsOptions.prototype:
+    abstract: true
+    class: 'Vigihdev\WpAssets\DTOs\JsOptionsDto'
+
+  js.footer.prototype:
+    parent: "jsOptions.prototype"
+    arguments:
+      $inFooter: true
+
+  js.defer.prototype:
+    parent: "js.footer.prototype"
+    arguments:
+      $strategy: "defer"
+
   depends_jquery.prototype:
     parent: "scriptEnqueue.prototype"
     arguments:
       $depends: ["jquery-min"]
-
-  jsOptions.prototype:
-    abstract: true
-    class: 'Vigihdev\WpAssets\DTOs\JsOptionsDto'
-    arguments:
-      $inFooter: true
 
   # css prototype
   styleEnqueue.prototype:

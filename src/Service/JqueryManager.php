@@ -27,7 +27,7 @@ final class JqueryManager implements JqueryManagerInterface
                 $jquery->getSrcUri(),
                 $jquery->getDepends(),
                 $jquery->getVersion(),
-                $jquery->getJsOption()->toArray()
+                $jquery->getJsOption()?->toArray()
             );
         });
     }
