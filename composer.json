@@ -51,6 +51,7 @@
     },
     "config": {
         "process-timeout": 0,
+        "preferred-install": "dist",
         "allow-plugins": {
             "composer/installers": true
         }
