@@ -1,10 +1,2 @@
 # .gitattributes
 /tests export-ignore
-
-/tests/* export-ignore
-/tests/*/* export-ignore
-
-# Untuk cover file hidden juga
-**/.DS_Store export-ignore
-*.DS_Store export-ignore
-.DS_Store export-ignore
