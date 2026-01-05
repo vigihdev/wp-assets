@@ -11,7 +11,7 @@ package-lock.json
 package.json
 node_modules/
 vendor/
-tests/
+# tests/
 composer.lock
 wp-bootstrap.php
 dev.php
