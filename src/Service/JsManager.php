@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Vigihdev\WpAssets\Service;
 
+use Vigihdev\Support\Text;
 use Vigihdev\WpAssets\Contracts\Manager\JsManagerInterface;
 use Vigihdev\WpAssets\Contracts\ScriptEnqueueInterface;
 use Vigihdev\WpAssets\DTOs\ScriptEnqueueDto;
+use Vigihdev\WpAssets\Support\AssetHelper;
 
 final class JsManager implements JsManagerInterface
 {
@@ -29,12 +31,28 @@ final class JsManager implements JsManagerInterface
 
     public function publish(): void
     {
-        add_action('wp_enqueue_scripts', function () {
-            // TODO: Add js enqueue
-        });
 
-        foreach ($this->jsAssets as $asset) {
-            // TODO: Add js enqueue
+        if (empty($this->jsAssets)) {
+            return;
         }
+
+        add_action('wp_enqueue_scripts', function () {
+            foreach ($this->jsAssets as $asset) {
+
+                if (!AssetHelper::isUrl($asset->getSrcUri())) {
+                    continue;
+                }
+
+                $hashJs = AssetHelper::cid($asset->getSrcUri());
+                $hadleJs = $asset->getHandle() . '-' . $hashJs;
+                wp_enqueue_script(
+                    handle: Text::toKebabCase($hadleJs),
+                    src: $asset->getSrcUri(),
+                    deps: $asset->getDepends(),
+                    ver: $asset->getVersion(),
+                    args: $asset->getJsOption()->toArray(),
+                );
+            }
+        });
     }
 }

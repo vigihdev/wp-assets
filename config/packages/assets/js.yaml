@@ -1,29 +1,22 @@
 # js.yaml
 services:
-  js.prototype:
-    parent: "jsOptions.prototype"
-
-  defer.js.prototype:
-    parent: "jsOptions.prototype"
-    arguments:
-      $strategy: "defer"
-
-  # js
-  jquery_min.js:
+  jquery_slim_min.js:
     parent: "scriptEnqueue.prototype"
     tags: ["js"]
     arguments:
-      $srcUri: "%dist.uri%/js/jquery.min.js"
-      $handle: "jquery-min"
-      $jsOption: "@js.prototype"
+      $srcUri: "https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      $handle: "jquery-slim-min"
+      $jsOption: "@js.defer.prototype"
+      $depends: ["%jquery.handle%"]
 
-  script.js:
-    parent: "depends_jquery.prototype"
+  test.js:
+    parent: "scriptEnqueue.prototype"
     tags: ["js"]
     arguments:
-      $srcUri: "%dist.uri%/js/script.js"
-      $handle: "bs-script"
-      $jsOption: "@defer.js.prototype"
+      $srcUri: "%dist.uri%/js/test.js"
+      $handle: "test-js"
+      $jsOption: "@js.defer.prototype"
+      $depends: ["%jquery.handle%"]
 
   Vigihdev\WpAssets\Contracts\Manager\JsManagerInterface:
     class: 'Vigihdev\WpAssets\Service\JsManager'
