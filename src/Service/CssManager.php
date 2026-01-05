@@ -29,10 +29,6 @@ final class CssManager implements CssManagerInterface
 
     public function publish(): void
     {
-        add_action('wp_enqueue_scripts', function () {
-            // Todo : Add css enqueue
-        });
-
         foreach ($this->cssAssets as $asset) {
             // Todo : Add css enqueue
         }

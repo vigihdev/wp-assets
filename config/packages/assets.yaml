@@ -7,7 +7,7 @@ parameters:
 imports:
   - { resource: "assets/_proto.yaml" }
   - { resource: "assets/jquery.yaml" }
+  - { resource: "assets/app-asset.yaml" }
   - { resource: "assets/css.yaml" }
   - { resource: "assets/js.yaml" }
-  - { resource: "assets/app-asset.yaml" }
   - { resource: "assets/js-localize.yaml" }
