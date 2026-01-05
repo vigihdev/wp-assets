@@ -53,13 +53,15 @@
         "process-timeout": 0,
         "allow-plugins": {
             "composer/installers": true
-        },
-        "preferred-install": {
-            "vigihdev/wp-assets": "dist",
-            "*": "auto"
         }
     },
     "scripts": {
+        "post-install-cmd": [
+            "rm -rf vendor/vigihdev/wp-assets/tests 2>/dev/null || true"
+        ],
+        "post-update-cmd": [
+            "rm -rf vendor/vigihdev/wp-assets/tests 2>/dev/null || true"
+        ],
         "test": "phpunit",
         "push-all": "sh ./scripts/push-all.sh",
         "dev": "php -S localhost:5377 dev.php"
