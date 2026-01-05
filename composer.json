@@ -2,6 +2,7 @@
     "name": "vigihdev/wp-assets",
     "version": "1.0.1",
     "description": "Vigih Dev Wp Assets",
+    "homepage": "https://github.com/vigihdev/wp-assets",
     "type": "library",
     "license": "MIT",
     "keywords": [
