@@ -1,7 +1,0 @@
-# module-js.yaml
-services:
-  scriptEnqueue.prototype:
-    abstract: true
-    class: 'Vigihdev\WpAssets\DTOs\ScriptEnqueueDto'
-    arguments:
-      $version: "%env(ASSETS_VERSION)%"

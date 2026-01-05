@@ -21,6 +21,15 @@ final class AssetHelper
         return filter_var($path, FILTER_VALIDATE_URL) !== false;
     }
 
+    public static function resolveHandle(string $path): string
+    {
+        if (self::isUrl($path)) {
+            $path = parse_url($path, PHP_URL_PATH);
+            return (string)pathinfo($path, PATHINFO_FILENAME);
+        }
+        return (string)pathinfo($path, PATHINFO_FILENAME);
+    }
+
     public static function cid(...$args): string
     {
         $arg = implode('-', $args);

@@ -9,6 +9,7 @@ use Vigihdev\WpAssets\Contracts\AppAssetInterface;
 use Vigihdev\WpAssets\Contracts\Manager\AppAssetManagerInterface;
 use Vigihdev\WpAssets\DTOs\AppAssetDto;
 use Vigihdev\WpAssets\Exceptions\WpAssetsException;
+use Vigihdev\WpAssets\Support\AssetHelper;
 
 /**
  * Manajer asset aplikasi
@@ -43,8 +44,8 @@ final class AppAssetManager implements AppAssetManagerInterface
         if (!empty($this->asset->getCss())) {
             add_action('wp_enqueue_scripts', function () {
                 foreach ($this->asset->getCss() as $css) {
-                    $hashCss = sprintf("%u", crc32($css));
-                    $hadleCss = preg_replace('/(.*?\/)(.*)(\.css$)/', '${2}-' . $hashCss, $css);
+                    $hashCss = AssetHelper::cid($css);
+                    $hadleCss = AssetHelper::resolveHandle($css) . '-' . $hashCss;
                     wp_enqueue_style(
                         handle: Text::toKebabCase($hadleCss),
                         src: "{$this->asset->getBaseUrl()}/{$css}",
@@ -60,9 +61,10 @@ final class AppAssetManager implements AppAssetManagerInterface
 
             add_action('wp_enqueue_scripts', function () {
                 foreach ($this->asset->getJs() as $js) {
-                    $hadle = preg_replace('/(.*?\/)(.*)(\.js$)/', '$2', $js);
+                    $hashJs = AssetHelper::cid($js);
+                    $hadleJs = AssetHelper::resolveHandle($js) . '-' . $hashJs;
                     wp_enqueue_script(
-                        handle: Text::toKebabCase($hadle),
+                        handle: Text::toKebabCase($hadleJs),
                         src: "{$this->asset->getBaseUrl()}/{$js}",
                         deps: $this->asset->getDepends(),
                         ver: $this->asset->getVersion(),
