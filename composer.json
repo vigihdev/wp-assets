@@ -54,6 +54,11 @@
             "composer/installers": true
         }
     },
+    "archive": {
+        "exclude": [
+            "tests"
+        ]
+    },
     "scripts": {
         "test": "phpunit",
         "push-all": "sh ./scripts/push-all.sh",
