@@ -11,14 +11,15 @@ final class AppAssetDto implements AppAssetInterface
 {
 
     /**
-     *
-     * @param string $basepath 
-     * @param string $baseUrl
-     * @param string $version
-     * @param JsOptionsDto $jsOption
-     * @param array $depends
-     * @param array $js
-     * @param array $css
+     * The AppAssetDto constructor.
+     * 
+     * @param string $basepath The basepath of the asset.
+     * @param string $baseUrl The base URL of the asset.
+     * @param string $version The version of the asset.
+     * @param JsOptionsDto $jsOption The JS options of the asset.
+     * @param array $depends The depends of the asset.
+     * @param array $js The JS files of the asset.
+     * @param array $css The CSS files of the asset.
      * @return void
      */
     public function __construct(
