@@ -7,5 +7,4 @@
 tests export-ignore
 config export-ignore
 storage export-ignore
-/tests/** export-ignore
 phpunit.xml export-ignore
