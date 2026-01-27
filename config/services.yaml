@@ -1,3 +1,0 @@
-# services.yaml
-imports:
-  - { resource: "packages/assets.yaml" }
