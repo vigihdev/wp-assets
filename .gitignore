@@ -15,3 +15,4 @@ composer.lock
 wp-bootstrap.php
 dev.php
 scripts
+local-dev

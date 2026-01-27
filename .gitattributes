@@ -4,7 +4,6 @@
 .env export-ignore
 tests export-ignore
 /tests/** export-ignore
-/tests/**/** export-ignore
 config export-ignore
 storage export-ignore
 phpunit.xml export-ignore
