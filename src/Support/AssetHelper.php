@@ -76,4 +76,15 @@ final class AssetHelper
     {
         return (string)pathinfo($path, PATHINFO_FILENAME);
     }
+
+    public static function isLocalUrl(string $url): bool
+    {
+        if (!self::isUrl($url)) {
+            return false;
+        }
+
+        $host = parse_url($url, PHP_URL_HOST);
+        $localhost = parse_url(site_url(), PHP_URL_HOST);
+        return $host === $localhost;
+    }
 }
