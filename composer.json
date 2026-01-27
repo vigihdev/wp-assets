@@ -57,5 +57,15 @@
         "test": "phpunit",
         "push-all": "sh ./scripts/push-all.sh",
         "dev": "php -S localhost:5377 dev.php"
+    },
+    "archive": {
+        "exclude": [
+            "/.gitattributes",
+            "/.gitignore",
+            "/.github",
+            "/tests",
+            "phpunit.xml",
+            ".env"
+        ]
     }
 }
