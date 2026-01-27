@@ -3,6 +3,7 @@
 .gitignore export-ignore
 .gitattributes export-ignore
 .github export-ignore
+.env export-ignore
 tests export-ignore
 storage export-ignore
 /tests/** export-ignore
